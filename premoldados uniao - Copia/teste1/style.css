@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+:root{
+    
+    --cor1: #FFC500;
+    --cor2: #FFA500;
+    --cor3: #FF8100;
+    --cor4: #FF5400;
+
+    --fonte-padrao: Arial, Verdana, Helvetica, Sans-serif;
+    --fonte-destaque:"Bebas Neue", sans-serif;
+    --fonte-tema: "Montserrat", sans-serif;
+}
+
+body{
+    background-color: gray;
+}
+
+header{
+    background-color: white;
+    height: 150px;
+    background-image: linear-gradient(var(--cor2), var(--cor4));
+    box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.486);
+}
+
+header > h1{
+    max-width: 500px;
+    color: white;
+    font-family: var(--fonte-tema);
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 9px rgba(0, 0, 0, 0.486);
+}
+
+nav{
+    background-color: var(--cor4);
+    
+}
+
+nav > a{
+    text-decoration: none;
+}
+
+main{
+    min-width: 200px;
+    max-width: 1000px;
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.438);
+}
+
+main > p{
+    font-family: var(--fonte-padrao);
+}
