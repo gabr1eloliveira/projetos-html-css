@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'ValorantFont';
+    src: url(valorant/Valorant\ Font.ttf) format('truetype');
+}
+a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+a:hover{
+    color: red;
+}
+body{
+    background-color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif; 
+}
+.val{
+    padding: 30px;
+}
+.fundo{
+    background-color: red;
+    font-family: 'ValorantFont', sans-serif;
+}
+header{
+    background-color: rgb(228, 68, 68);
+    color: white; 
+    text-align: center;
+    border-radius: 20px;
+    font-size: 20px;
+}
+.typ{
+    list-style: none;         
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; 
+    
+}
+.typ  li {
+  margin: 0;
+}
+.typ li a {
+  display: block;
+  padding: 15px 20px;         
+  text-decoration: none;       
+  color: white;
+ }
+.skin{
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size:40px;
+}
+.but{
+    color: white;
+    background-color: red;
+    border: none;
+    padding: 20px 35px; 
+    border-radius: 50px; 
+    font-size: 20px; 
+    cursor: pointer;
+    box-shadow:  0 4px 6px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: auto;
+}
+.but:hover {
+    background-color: darkred
+}
+.but{
+    color: rgb(255, 255, 255);
+    background-color: rgba(204, 20, 20, 0.527);
+    border: none;
+    padding: 15px 30px; 
+    border-radius: 5px;
+    font-size: 20px; 
+    cursor: pointer;
+    box-shadow:  0 4px 6px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: auto;
+}
+.but:hover{
+    background-color: rgb(58, 6, 6);
+}
+
+
