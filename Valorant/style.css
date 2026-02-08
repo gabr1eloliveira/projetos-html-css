@@ -78,6 +78,8 @@ header{
 }
 .but:hover{
     background-color: rgb(58, 6, 6);
+    transform: scale(1.1);
+    transition-duration: 0.5s;
 }
 
 
