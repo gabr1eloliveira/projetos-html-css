@@ -19,24 +19,37 @@ header{
     background-color: rgb(197, 131, 9);
     font-weight: bolder;
 }
+
+header > h1{
+    text-align: center;
+    font-size: 40px;
+    font-family: "Montserrat", sans-serif;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(197, 131, 9);
+    font-weight: bolder;  
+}
+
 ul {
     font-size: 25px;
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 150px; 
-  padding: 10px;
+    gap: 20px; 
+    padding: 10px;
     
 }
 ul li{
     margin: 0;
 }
-a{
+.navbar > a{
     text-decoration: none;
     color: white;
+    padding: 10px;
+    border-radius: 10px;
 }
-a:hover{
+.navbar > a:hover{
     color: rgb(226, 175, 8);
+    background-color:rgb(143, 95, 5); ;
+    transform: scale(1.1);
+    transition-duration: 0.5s;
 }
 .preço{
     color: rgb(197, 131, 9);
@@ -51,4 +64,10 @@ button{
 }
 button:hover{
     background-color: rgb(226, 175, 8);
+}
+
+main{
+    max-width: 1000px;
+    min-width: 600px;
+    margin: auto;
 }

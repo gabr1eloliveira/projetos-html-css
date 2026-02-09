@@ -24,13 +24,18 @@ ul {
   padding: 10px;
 }
 
-a{
+#navbar > a{
     text-decoration: none;
     color: white;
+    padding: 10px;
+    border-radius: 10px;
 }
 
-a:hover{
+#navbar > a:hover{
     color: rgb(226, 175, 8);
+    background-color:rgb(143, 95, 5); ;
+    transform: scale(1.1);
+    transition-duration: 0.5s;
 }
 
 .mouse{
