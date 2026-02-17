@@ -7,7 +7,6 @@
     align-items: center;
     justify-content: end;
     margin-right: 300px;
-    margin-boo
     height: 100vh;
 }
 
@@ -19,7 +18,7 @@
 }
 
 #conteudo {
-    width: 500px;
+    max-width: 500px;
 }
 
 #shop-btn{
