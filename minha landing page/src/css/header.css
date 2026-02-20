@@ -14,7 +14,7 @@
 
 #navbar-list{
     display: flex;
-    margin-right: 450px;
+    margin-right: 250px;
     gap: 80px;
     list-style: none;
 }
