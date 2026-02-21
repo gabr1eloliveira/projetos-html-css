@@ -1,0 +1,13 @@
+#home{
+    display: flex;
+
+}
+
+#banner-home img{
+    width:100%;
+    height: auto;
+}
+
+#conteudo-home {
+    text-wrap: ;
+}

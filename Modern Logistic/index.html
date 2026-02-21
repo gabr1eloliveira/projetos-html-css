@@ -5,15 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thynk Unlimited</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/header.css">
+    <link rel="stylesheet" href="src/css/home.css">
 </head>
 <body>
     <header>
         <nav id="navbar">
-            Thynk <br>
-            <span>Unlimited</span>
+            <div id="navbar-logo">
+                <span>Thynk</span> <br>
+                Unlimited
+            </div>
+            
             <ul id="navbar-list">
 
-                <li class="navbar_item">
+                <li class="navbar_item active">
                     <a href="#home">Home</a>
                 </li>
 
@@ -28,13 +34,32 @@
                 <li class="navbar_item">
                     <a href="#Others">Others</a>
                 </li>
-
-                <div class="contador">
-                    Page 1
-                </div>
-
             </ul>
+            <div class="contador">
+                Page 1
+            </div>
+
+            
         </nav>
-    </header>    
+    </header>  
+    
+    <main>
+        <section id="home">
+            <div id="banner-home">
+                <img src="src/imagens/Black and Blue Modern Logistic Presentation.png" alt="">
+            </div>
+
+            <div id="conteudo-home">
+                <h1 class="title">
+                    The World of
+                    <span>Logistic</span>
+                </h1>
+
+                <p class="description">
+                    Logistics is the backbone of global trade, ensuring the efficient transportation, storage, and distribution of goods. From supply chains to last-mile delivery, logistics keeps industries running smoothly.
+                </p>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
