@@ -3,20 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Sistema de Saída de Blocos</title>
-<style>
-body { font-family: Arial; background:#f2f2f2; padding:20px }
-h2 { margin-top:30px }
-input, select, button { padding:6px; margin:4px }
-table { border-collapse: collapse; width:100%; margin-top:10px; background:white }
-th, td { border:1px solid #ccc; padding:6px; text-align:center }
-button { cursor:pointer }
-</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="src/style.css">
 </head>
 <body>
 
-<h1>🏗️ Sistema de Saída de Blocos</h1>
+<i class="fa-solid fa-building-flag" id="logo"></i>
+<h1 id="title"> Sistema de Saída de Blocos</h1>
 
-<h2>📦 Cadastro de Depósitos</h2>
+
+<h2 class="sub_title">📦 Cadastro de Depósitos</h2>
 <input id="nomeDeposito" placeholder="Nome do depósito">
 <input id="enderecoDeposito" placeholder="Endereço">
 <input id="precoDeposito" type="number" step="0.01" placeholder="Preço por bloco">
@@ -26,7 +22,7 @@ button { cursor:pointer }
 <tr><th>Nome</th><th>Endereço</th><th>Preço</th></tr>
 </table>
 
-<h2>🧾 Registrar Saída</h2>
+<h2 class="sub_title">🧾 Registrar Saída</h2>
 <select id="selectDeposito"></select>
 <input id="quantidade" type="number" placeholder="Quantidade">
 <select id="status">
@@ -42,66 +38,7 @@ button { cursor:pointer }
 <h2>📊 Relatório Mensal</h2>
 <p id="relatorio"></p>
 
-<script>
-let depositos = JSON.parse(localStorage.getItem("depositos")) || [];
-let saidas = JSON.parse(localStorage.getItem("saidas")) || [];
-
-function salvar() {
-  localStorage.setItem("depositos", JSON.stringify(depositos));
-  localStorage.setItem("saidas", JSON.stringify(saidas));
-}
-
-function addDeposito() {
-  let nome = nomeDeposito.value;
-  let endereco = enderecoDeposito.value;
-  let preco = parseFloat(precoDeposito.value);
-  depositos.push({nome,endereco,preco});
-  salvar();
-  atualizarTudo();
-}
-
-function addSaida() {
-  let dep = selectDeposito.value;
-  let qtd = parseInt(quantidade.value);
-  let statusPagamento = status.value;
-  let deposito = depositos.find(d=>d.nome==dep);
-  let total = qtd * deposito.preco;
-  let data = new Date().toLocaleDateString();
-  saidas.push({data,dep,qtd,preco:deposito.preco,total,status:statusPagamento});
-  salvar();
-  atualizarTudo();
-}
-
-function atualizarTudo() {
-  tabelaDepositos.innerHTML="<tr><th>Nome</th><th>Endereço</th><th>Preço</th></tr>";
-  depositos.forEach(d=>{
-    tabelaDepositos.innerHTML+=`<tr><td>${d.nome}</td><td>${d.endereco}</td><td>${d.preco.toFixed(2)}</td></tr>`;
-  });
-
-  selectDeposito.innerHTML="";
-  depositos.forEach(d=>{
-    selectDeposito.innerHTML+=`<option>${d.nome}</option>`;
-  });
-
-  tabelaSaidas.innerHTML="<tr><th>Data</th><th>Depósito</th><th>Qtd</th><th>Preço</th><th>Total</th><th>Status</th></tr>";
-  saidas.forEach(s=>{
-    tabelaSaidas.innerHTML+=`<tr>
-    <td>${s.data}</td><td>${s.dep}</td><td>${s.qtd}</td>
-    <td>${s.preco.toFixed(2)}</td><td>${s.total.toFixed(2)}</td><td>${s.status}</td>
-    </tr>`;
-  });
-
-  let totalPago = saidas.filter(s=>s.status=="Pago").reduce((a,b)=>a+b.total,0);
-  let totalPendente = saidas.filter(s=>s.status=="Pendente").reduce((a,b)=>a+b.total,0);
-
-  relatorio.innerHTML = `
-  💰 Total Pago: R$ ${totalPago.toFixed(2)}<br>
-  ⏳ Total Pendente: R$ ${totalPendente.toFixed(2)}
-  `;
-}
-
-atualizarTudo();
-</script>
+<script src="src/javascript/JavaScript.js"></script>
 
 </body>
 </html>
