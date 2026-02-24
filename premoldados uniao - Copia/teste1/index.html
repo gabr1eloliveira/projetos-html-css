@@ -1,31 +1,107 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premoldados União</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<title>Sistema de Saída de Blocos</title>
+<style>
+body { font-family: Arial; background:#f2f2f2; padding:20px }
+h2 { margin-top:30px }
+input, select, button { padding:6px; margin:4px }
+table { border-collapse: collapse; width:100%; margin-top:10px; background:white }
+th, td { border:1px solid #ccc; padding:6px; text-align:center }
+button { cursor:pointer }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Premoldados União</h1>
-    </header> 
-    <nav>
-      <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Categorias</a></li>
-        <li><a href="#">Carrinho</a></li>
-        <li><a href="#">Suporte</a></li>
-      </ul> 
-    </nav>  
-    <main>
-        <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, excepturi! Quos explicabo enim nobis dolores deleniti esse, quas est expedita facere dignissimos possimus velit aperiam sit inventore odit labore pariatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque officia, obcaecati voluptatem, distinctio beatae expedita ut ad illum quia voluptate aut. Quae, ex. Blanditiis vitae impedit expedita, placeat optio recusandae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro harum inventore itaque corporis molestiae, ipsam quidem? Quae blanditiis non unde esse voluptas placeat porro tenetur! Optio amet perferendis ducimus porro.
-        </p>
-    </main>
-    <footer>
-        
-    </footer>
+
+<h1>🏗️ Sistema de Saída de Blocos</h1>
+
+<h2>📦 Cadastro de Depósitos</h2>
+<input id="nomeDeposito" placeholder="Nome do depósito">
+<input id="enderecoDeposito" placeholder="Endereço">
+<input id="precoDeposito" type="number" step="0.01" placeholder="Preço por bloco">
+<button onclick="addDeposito()">Cadastrar</button>
+
+<table id="tabelaDepositos">
+<tr><th>Nome</th><th>Endereço</th><th>Preço</th></tr>
+</table>
+
+<h2>🧾 Registrar Saída</h2>
+<select id="selectDeposito"></select>
+<input id="quantidade" type="number" placeholder="Quantidade">
+<select id="status">
+<option>Pendente</option>
+<option>Pago</option>
+</select>
+<button onclick="addSaida()">Registrar</button>
+
+<table id="tabelaSaidas">
+<tr><th>Data</th><th>Depósito</th><th>Qtd</th><th>Preço</th><th>Total</th><th>Status</th></tr>
+</table>
+
+<h2>📊 Relatório Mensal</h2>
+<p id="relatorio"></p>
+
+<script>
+let depositos = JSON.parse(localStorage.getItem("depositos")) || [];
+let saidas = JSON.parse(localStorage.getItem("saidas")) || [];
+
+function salvar() {
+  localStorage.setItem("depositos", JSON.stringify(depositos));
+  localStorage.setItem("saidas", JSON.stringify(saidas));
+}
+
+function addDeposito() {
+  let nome = nomeDeposito.value;
+  let endereco = enderecoDeposito.value;
+  let preco = parseFloat(precoDeposito.value);
+  depositos.push({nome,endereco,preco});
+  salvar();
+  atualizarTudo();
+}
+
+function addSaida() {
+  let dep = selectDeposito.value;
+  let qtd = parseInt(quantidade.value);
+  let statusPagamento = status.value;
+  let deposito = depositos.find(d=>d.nome==dep);
+  let total = qtd * deposito.preco;
+  let data = new Date().toLocaleDateString();
+  saidas.push({data,dep,qtd,preco:deposito.preco,total,status:statusPagamento});
+  salvar();
+  atualizarTudo();
+}
+
+function atualizarTudo() {
+  tabelaDepositos.innerHTML="<tr><th>Nome</th><th>Endereço</th><th>Preço</th></tr>";
+  depositos.forEach(d=>{
+    tabelaDepositos.innerHTML+=`<tr><td>${d.nome}</td><td>${d.endereco}</td><td>${d.preco.toFixed(2)}</td></tr>`;
+  });
+
+  selectDeposito.innerHTML="";
+  depositos.forEach(d=>{
+    selectDeposito.innerHTML+=`<option>${d.nome}</option>`;
+  });
+
+  tabelaSaidas.innerHTML="<tr><th>Data</th><th>Depósito</th><th>Qtd</th><th>Preço</th><th>Total</th><th>Status</th></tr>";
+  saidas.forEach(s=>{
+    tabelaSaidas.innerHTML+=`<tr>
+    <td>${s.data}</td><td>${s.dep}</td><td>${s.qtd}</td>
+    <td>${s.preco.toFixed(2)}</td><td>${s.total.toFixed(2)}</td><td>${s.status}</td>
+    </tr>`;
+  });
+
+  let totalPago = saidas.filter(s=>s.status=="Pago").reduce((a,b)=>a+b.total,0);
+  let totalPendente = saidas.filter(s=>s.status=="Pendente").reduce((a,b)=>a+b.total,0);
+
+  relatorio.innerHTML = `
+  💰 Total Pago: R$ ${totalPago.toFixed(2)}<br>
+  ⏳ Total Pendente: R$ ${totalPendente.toFixed(2)}
+  `;
+}
+
+atualizarTudo();
+</script>
+
 </body>
 </html>
