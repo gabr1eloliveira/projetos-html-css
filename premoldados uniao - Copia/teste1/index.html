@@ -12,28 +12,30 @@
 <h1 id="title"> Sistema de Saída de Blocos</h1>
 
 
-<h2 class="sub_title">📦 Cadastro de Depósitos</h2>
-<input id="nomeDeposito" placeholder="Nome do depósito">
-<input id="enderecoDeposito" placeholder="Endereço">
-<input id="precoDeposito" type="number" step="0.01" placeholder="Preço por bloco">
-<button onclick="addDeposito()">Cadastrar</button>
-
-<table id="tabelaDepositos">
-<tr><th>Nome</th><th>Endereço</th><th>Preço</th></tr>
-</table>
-
-<h2 class="sub_title">🧾 Registrar Saída</h2>
-<select id="selectDeposito"></select>
-<input id="quantidade" type="number" placeholder="Quantidade">
-<select id="status">
-<option>Pendente</option>
-<option>Pago</option>
-</select>
-<button onclick="addSaida()">Registrar</button>
-
-<table id="tabelaSaidas">
-<tr><th>Data</th><th>Depósito</th><th>Qtd</th><th>Preço</th><th>Total</th><th>Status</th></tr>
-</table>
+<div id="content">
+    <h2 class="sub_title">📦 Cadastro de Depósitos</h2>
+    <input id="nomeDeposito" placeholder="Nome do depósito">
+    <input id="enderecoDeposito" placeholder="Endereço">
+    <input id="precoDeposito" type="number" step="0.01" placeholder="Preço por bloco">
+    <button onclick="addDeposito()" >Cadastrar</button>
+    
+    <table id="tabelaDepositos">
+    <tr><th>Nome</th><th>Endereço</th><th>Preço</th></tr>
+    </table>
+    
+    <h2 class="sub_title">🧾 Registrar Saída</h2>
+    <select id="selectDeposito"></select>
+    <input id="quantidade" type="number" placeholder="Quantidade">
+    <select id="status">
+    <option>Pendente</option>
+    <option>Pago</option>
+    </select>
+    <button onclick="addSaida()">Registrar</button>
+    
+    <table id="tabelaSaidas">
+    <tr><th>Data</th><th>Depósito</th><th>Qtd</th><th>Preço</th><th>Total</th><th>Status</th></tr>
+    </table>
+</div>
 
 <h2>📊 Relatório Mensal</h2>
 <p id="relatorio"></p>
