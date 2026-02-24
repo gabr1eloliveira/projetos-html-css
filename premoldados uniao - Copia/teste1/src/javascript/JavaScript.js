@@ -1,0 +1,58 @@
+let depositos = JSON.parse(localStorage.getItem("depositos")) || [];
+let saidas = JSON.parse(localStorage.getItem("saidas")) || [];
+
+function salvar() {
+  localStorage.setItem("depositos", JSON.stringify(depositos));
+  localStorage.setItem("saidas", JSON.stringify(saidas));
+}
+
+function addDeposito() {
+  let nome = nomeDeposito.value;
+  let endereco = enderecoDeposito.value;
+  let preco = parseFloat(precoDeposito.value);
+  depositos.push({nome,endereco,preco});
+  salvar();
+  atualizarTudo();
+}
+
+function addSaida() {
+  let dep = selectDeposito.value;
+  let qtd = parseInt(quantidade.value);
+  let statusPagamento = status.value;
+  let deposito = depositos.find(d=>d.nome==dep);
+  let total = qtd * deposito.preco;
+  let data = new Date().toLocaleDateString();
+  saidas.push({data,dep,qtd,preco:deposito.preco,total,status:statusPagamento});
+  salvar();
+  atualizarTudo();
+}
+
+function atualizarTudo() {
+  tabelaDepositos.innerHTML="<tr><th>Nome</th><th>Endereço</th><th>Preço</th></tr>";
+  depositos.forEach(d=>{
+    tabelaDepositos.innerHTML+=`<tr><td>${d.nome}</td><td>${d.endereco}</td><td>${d.preco.toFixed(2)}</td></tr>`;
+  });
+
+  selectDeposito.innerHTML="";
+  depositos.forEach(d=>{
+    selectDeposito.innerHTML+=`<option>${d.nome}</option>`;
+  });
+
+  tabelaSaidas.innerHTML="<tr><th>Data</th><th>Depósito</th><th>Qtd</th><th>Preço</th><th>Total</th><th>Status</th></tr>";
+  saidas.forEach(s=>{
+    tabelaSaidas.innerHTML+=`<tr>
+    <td>${s.data}</td><td>${s.dep}</td><td>${s.qtd}</td>
+    <td>${s.preco.toFixed(2)}</td><td>${s.total.toFixed(2)}</td><td>${s.status}</td>
+    </tr>`;
+  });
+
+  let totalPago = saidas.filter(s=>s.status=="Pago").reduce((a,b)=>a+b.total,0);
+  let totalPendente = saidas.filter(s=>s.status=="Pendente").reduce((a,b)=>a+b.total,0);
+
+  relatorio.innerHTML = `
+  💰 Total Pago: R$ ${totalPago.toFixed(2)}<br>
+  ⏳ Total Pendente: R$ ${totalPendente.toFixed(2)}
+  `;
+}
+
+atualizarTudo();
