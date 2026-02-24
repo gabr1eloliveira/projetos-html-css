@@ -1,6 +1,7 @@
 #home{
     display: flex;
-
+    justify-content: space-between;
+    padding: 50px;
 }
 
 #banner-home img{
@@ -8,6 +9,7 @@
     height: auto;
 }
 
-#conteudo-home {
-    text-wrap: ;
+#conteudo-home h1{
+    font-size: 1.5em;
 }
+
