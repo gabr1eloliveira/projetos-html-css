@@ -9,8 +9,11 @@
 }
 
 body{
-    background: black url(bloco\ 01.jpeg) center center no-repeat fixed;
+    background: black url(bloco\ 01.jpeg);
     background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed ;
 }
 
 #logo{
@@ -21,31 +24,39 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    padding: 20px 0; /* allow some vertical breathing space */
 }
 
 #content{
     background-color: rgba(255, 255, 255, 0.096);
-    height: 700px;
-    width: 1100px;
+    /* use flexible sizing */
+    max-width: 1100px;
+    width: 90vw;
+    height: auto;
+    padding: 30px;
     margin: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 15px;
-    box-shadow: 0px 0px 12px 8px rgba(0,0,0,0.1)
+    box-shadow: 0px 0px 12px 8px rgba(0,0,0,0.1);
 }
+
 
 #login{
     background-color: rgba(255, 255, 255, 0.185);
-    height: 600px;
-    width: 600px;
-    padding: 30px ;
+    /* make login box flexible */
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    box-shadow: 0px 0px 12px 8px rgba(0,0,0,0.1)
+    box-shadow: 0px 0px 12px 8px rgba(0,0,0,0.1);
 }
+
 
 #Email{
     padding: 13px;
@@ -53,6 +64,7 @@ body{
     border: 2px solid transparent;
     background-color: white;
     transition: border-color 0.3s;
+    box-shadow: 0px 0px 12px 8px rgba(0,0,0,0.1)
 }
 
 #Email:focus{
@@ -66,6 +78,7 @@ body{
     border: 2px solid transparent;
     background-color: white;
     transition: border-color 0.3s;
+    box-shadow: 0px 0px 12px 8px rgba(0,0,0,0.1)
 }
 
 #senha:focus{
@@ -97,7 +110,11 @@ label{
     border: 1px transparent solid;
     background-color: rgb(233, 139, 33);
     cursor: pointer;
+    box-shadow: 0px 0px 12px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 300px;
 }
+
 
 #login-btn:hover{
     background-color: rgb(177, 97, 7);
@@ -123,7 +140,9 @@ label{
     align-items: center;
     gap: 40px;
     margin-top: 10px;
+    flex-wrap: wrap;
 }
+
 
 .social_media_iten{
     font-size: 1.8rem;
@@ -131,6 +150,7 @@ label{
     background-color: white;
     padding: 7px 50px;
     cursor: pointer;
+    box-shadow: 0px 0px 12px 8px rgba(0,0,0,0.1)
 }
 
 .social_media_iten:hover{
@@ -144,6 +164,50 @@ label{
 
 #register{
     text-decoration: none;
-    color: black;
+    color: rgb(177, 97, 7);
     font-weight: 600;
+}
+
+/* ===== responsive adjustments ===== */
+@media (max-width: 768px) {
+    #content {
+        width: 95vw;
+        padding: 20px;
+    }
+
+    #login {
+        padding: 20px;
+    }
+
+    label, #forgot-pass {
+        font-size: 1rem;
+    }
+
+    #Email, #senha {
+        width: 100%;
+        padding: 12px;
+    }
+
+    #login-btn a {
+        font-size: 1.2rem;
+    }
+
+    .social_media_iten {
+        padding: 7px 30px;
+        margin: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    #content, #login {
+        margin: 10px;
+    }
+
+    #login-btn {
+        padding: 14px;
+    }
+
+    .description {
+        font-size: 0.9rem;
+    }
 }
