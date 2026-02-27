@@ -1,0 +1,87 @@
+
+/*Barra de Navegação*/
+#navbar{
+    display: flex; 
+    width: 100%;
+    padding: 40px 50px;
+}
+
+#navbar-list{
+    display: flex;
+    margin-top: 50px;
+    margin-left: 5%;
+    gap: 30px;
+    list-style: none;
+}
+
+.navbar_list_item.active a{
+    border-bottom:  1px solid black;
+}
+
+.navbar_list_item a:hover{
+    border-bottom:  1px solid black;
+}
+
+#navbar-list a{
+    text-decoration: none;
+    color: black;
+}
+
+#logo{
+    margin-left: 20%;
+}
+
+/*Conteudo do Site*/
+
+#background{
+    width: 100%;
+    height: 350px;
+    background-image: url(background/bloco\ 02.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 20px;
+    box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.1);
+}
+
+#logo-background {
+    height: 90px;
+    background-color: white;
+    padding: 1px;
+    border-radius: 50% 50% 0px 0px;
+}
+
+.titulo{
+    font-size: 4rem;
+    color: white;
+    font-weight: 700;
+}
+
+.descrição{
+    color: white;
+    font-size: 0.8rem;
+}
+
+#orçamento-btn{
+    padding: 10px;
+    margin-top: 30px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    outline: none;
+    background-color: rgb(255, 136, 0);
+    box-shadow: 0px 0px 12px 2px rgba(0,0,0,0.1);
+}
+
+#orçamento-btn:hover{
+    background-color: rgb(199, 120, 29);
+    box-shadow: 0px 0px 12px 8px rgba(0,0,0,0.1);
+}
+
+#orçamento-btn a{
+    font-size: 0.7rem; 
+    font-weight: 500;     
+    color: white;
+    text-decoration: none;
+}
