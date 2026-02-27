@@ -39,6 +39,7 @@
     background-image: url(background/bloco\ 02.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     background-position: center center;
     display: flex;
     justify-content: space-around;
